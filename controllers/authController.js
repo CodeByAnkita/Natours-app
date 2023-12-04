@@ -49,6 +49,8 @@ exports.signup = catchAsync(async (req, res, next) => {
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
+  console.log('Login request received with email:', email);
+  console.log('Password provided:', password);
 
   // 1) Check if email and password exist
   if (!email || !password) {
@@ -84,6 +86,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
   }
+  console.log(token);
 
   if (!token) {
     return next(

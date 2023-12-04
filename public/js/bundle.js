@@ -12023,8 +12023,9 @@ var login = exports.login = /*#__PURE__*/function () {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          _context.prev = 0;
-          _context.next = 3;
+          console.log(email, password);
+          _context.prev = 1;
+          _context.next = 4;
           return (0, _axios.default)({
             method: 'POST',
             url: 'http://127.0.0.1:3000/api/v1/users/login',
@@ -12033,25 +12034,26 @@ var login = exports.login = /*#__PURE__*/function () {
               password: password
             }
           });
-        case 3:
+        case 4:
           res = _context.sent;
+          console.log(res);
           if (res.data.status === 'success') {
             (0, _alerts.showAlert)('success', 'Logged in successfully!');
             window.setTimeout(function () {
               location.assign('/');
             }, 1500);
           }
-          _context.next = 10;
+          _context.next = 12;
           break;
-        case 7:
-          _context.prev = 7;
-          _context.t0 = _context["catch"](0);
+        case 9:
+          _context.prev = 9;
+          _context.t0 = _context["catch"](1);
           (0, _alerts.showAlert)('error', _context.t0.response.data.message);
-        case 10:
+        case 12:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[1, 9]]);
   }));
   return function login(_x, _x2) {
     return _ref.apply(this, arguments);
@@ -12300,12 +12302,12 @@ if (loginForm) loginForm.addEventListener('submit', function (e) {
 if (logOutBtn) logOutBtn.addEventListener('click', _login.logout);
 if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  var name = document.getElementById('name').value;
-  var email = document.getElementById('email').value;
-  (0, _updateSettings.updateSettings)({
-    name: name,
-    email: email
-  }, 'data');
+  var form = new FormData();
+  form.append('name', document.getElementById('name').value);
+  form.append('email', document.getElementById('email').value);
+  form.append('photo', document.getElementById('photo').files[0]);
+  console.log(form);
+  (0, _updateSettings.updateSettings)(form, 'data');
 });
 if (userPasswordForm) userPasswordForm.addEventListener('submit', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
@@ -12364,7 +12366,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49472" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52287" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
