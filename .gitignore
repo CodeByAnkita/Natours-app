@@ -1,6 +1,11 @@
 
+# Ignore files with .env extension
+*.env
+
+# Ignore node_modules directory
+node_modules/
+
+
+# Ignore compiled binaries
 bin/
 obj/
-node_modules/
-*.log
-
