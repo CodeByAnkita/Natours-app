@@ -1,7 +1,10 @@
 
 # Ignore files with .env extension
 *.env
-.cache/
+
+# Ignore cache files with .cache extension
+*.cache
+
 # Ignore node_modules directory
 node_modules/
 
